@@ -255,7 +255,7 @@ a {
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(15, 15, 15, 0.9);
+  background: transparent; /* Changed to remove the black strip */
   backdrop-filter: blur(10px);
   padding: var(--space-md) 0;
 }
@@ -305,7 +305,8 @@ a {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: url("path/to/your/image.jpg") no-repeat center center; /* Changed background to an image */
+  background-size: cover; /* Ensure the background image covers the entire section */
   z-index: -1;
 }
 
@@ -737,7 +738,7 @@ a {
    1. Parent has [data-reveal-stagger] attribute
    2. All children start invisible (opacity: 0, translateY)
    3. When parent gets .revealed class, children animate with increasing delays
-   4. transition-delay creates the stagger: 0.1s, 0.2s, 0.3s, etc.
+   4. transition-delay creates the stagger: 0.1s, 0.2s, 0.3s, 0.4s, etc.
 
    💡 DATA ATTRIBUTES:
    We use data-* attributes instead of classes because:

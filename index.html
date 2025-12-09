@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
   </head>
 
   <body>
@@ -16,6 +16,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+    </div>
     </div>
 
     <main id="main">
@@ -120,13 +121,47 @@
         <div class="container">
           <h2 class="section-title animate-on-scroll visible">Get In Touch</h2>
           <div class="contact-content animate-on-scroll visible">
-            <p>
-              Interested in working together? Let's talk about your project.
-            </p>
-            <a href="mailto:hello@example.com" class="btn btn-primary"
-              >Say Hello</a
-            >
-            <div class="social-links">
+            <form id="contact-form" class="contact-form" novalidate>
+              <p>
+                Interested in working together? Fill the form below and I'll get
+                back to you.
+              </p>
+              <p class="spacer" aria-hidden="true"></p>
+              <p class="spacer" aria-hidden="true"></p>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="first-name">First name</label>
+                  <input type="text" id="first-name" name="firstName" required placeholder="Your first name" />
+                </div>
+                <div class="form-field">
+                  <label for="last-name">Last name</label>
+                  <input type="text" id="last-name" name="lastName" required placeholder="Your last name" />
+                </div>
+                <div class="form-field full-width">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required placeholder="you@domain.com" />
+                </div>
+                <div class="form-field full-width">
+                  <label for="coop-type">Type of cooperation</label>
+                  <select id="coop-type" name="coopType" required>
+                    <option value="">Select an option</option>
+                    <option>Short-term project</option>
+                    <option>Long-term collaboration</option>
+                    <option>Consulting / Mentorship</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-field full-width">
+                  <label for="notes">Project details / Notes</label>
+                  <textarea id="notes" name="notes" rows="6" placeholder="Tell me more about the project, timeline, budget or anything else..."></textarea>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Send message</button>
+                <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
+              </div>
+            </form>
+            <div class="social-links" aria-hidden="false">
               <a href="#" aria-label="GitHub">GitHub</a>
               <a href="#" aria-label="LinkedIn">LinkedIn</a>
               <a href="#" aria-label="Twitter">Twitter</a>
@@ -141,5 +176,7 @@
         <a href="#hero" class="back-to-top" aria-label="Back to top">↑</a>
       </div>
     </footer>
+    <script src="theme.js"></script>
+
   </body>
 </html>

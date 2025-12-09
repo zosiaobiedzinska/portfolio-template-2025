@@ -374,3 +374,52 @@ window.cleanupScrollObservers = () => {
   staggerObserver.disconnect();
   console.log("🧹 Observers cleaned up");
 };
+
+// -------------------------------------------------------------------------
+// Contact form handler
+// -------------------------------------------------------------------------
+function initContactForm() {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  const messageEl = document.getElementById("form-message");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const firstName = form.firstName.value.trim();
+    const lastName = form.lastName.value.trim();
+    const email = form.email.value.trim();
+    const coopType = form.coopType.value.trim();
+    const notes = form.notes.value.trim();
+
+    // Basic validation
+    if (!firstName || !lastName || !email || !coopType) {
+      if (messageEl)
+        messageEl.textContent = "Please complete all required fields.";
+      return;
+    }
+
+    // Compose mailto link
+    const subject = encodeURIComponent(
+      `Website inquiry: ${coopType} — ${firstName} ${lastName}`
+    );
+    const bodyLines = [
+      `Name: ${firstName} ${lastName}`,
+      `Email: ${email}`,
+      `Type of cooperation: ${coopType}`,
+      "",
+      `Notes:\n${notes}`,
+    ];
+    const body = encodeURIComponent(bodyLines.join("\n"));
+
+    // Open user's email client
+    const mailto = `mailto:hello@example.com?subject=${subject}&body=${body}`;
+    window.location.href = mailto;
+
+    if (messageEl) messageEl.textContent = "Opening your email client…";
+  });
+}
+
+// Init contact form after DOM ready
+document.addEventListener("DOMContentLoaded", initContactForm);

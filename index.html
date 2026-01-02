@@ -4,29 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/index.css" />
   </head>
 
   <body>
-    <div class="nav-container">
-      <a href="#" class="nav-logo">Portfolio</a>
-      <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-    </div>
+    <nav class="nav">
+      <div class="nav nav-container">
+        <a href="#" class="nav-logo">Portfolio</a>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
 
     <main id="main">
       <!-- Hero Section -->
       <section id="hero" class="hero">
         <div class="hero-bg parallax-bg"></div>
         <div class="hero-content">
-          <h1 class="hero-title animate-on-scroll visible">
-            Name &amp; Surname
-          </h1>
+          <h1 class="hero-title animate-on-scroll">Name &amp; Surname</h1>
           <p class="hero-subtitle animate-on-scroll visible">
             Your job &amp; your specialisation
           </p>
@@ -84,12 +84,13 @@
       <section id="projects" class="section projects">
         <div class="container">
           <h2 class="section-title animate-on-scroll visible">Projects</h2>
-          <div class="projects-grid revealed" data-reveal-stagger="">
+
+          <div class="projects-grid" data-reveal-stagger>
             <article class="project-card">
               <div class="project-image">
                 <img
                   src="https://picsum.photos/400/300?random=1"
-                  alt="Digital"
+                  alt="Digital project"
                   loading="lazy"
                 />
               </div>
@@ -98,11 +99,12 @@
                 <div class="project-tags"></div>
               </div>
             </article>
+
             <article class="project-card">
               <div class="project-image">
                 <img
                   src="https://picsum.photos/400/300?random=2"
-                  alt="Manual"
+                  alt="Manual project"
                   loading="lazy"
                 />
               </div>
@@ -111,7 +113,20 @@
                 <div class="project-tags"></div>
               </div>
             </article>
+
             <article class="project-card">
+              <div class="project-image">
+                <img
+                  src="https://picsum.photos/400/300?random=3"
+                  alt="Other project"
+                  loading="lazy"
+                />
+              </div>
+              <div class="project-content">
+                <h3>Other</h3>
+                <div class="project-tags"></div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -131,15 +146,33 @@
               <div class="form-grid">
                 <div class="form-field">
                   <label for="first-name">First name</label>
-                  <input type="text" id="first-name" name="firstName" required placeholder="Your first name" />
+                  <input
+                    type="text"
+                    id="first-name"
+                    name="firstName"
+                    required
+                    placeholder="Your first name"
+                  />
                 </div>
                 <div class="form-field">
                   <label for="last-name">Last name</label>
-                  <input type="text" id="last-name" name="lastName" required placeholder="Your last name" />
+                  <input
+                    type="text"
+                    id="last-name"
+                    name="lastName"
+                    required
+                    placeholder="Your last name"
+                  />
                 </div>
                 <div class="form-field full-width">
                   <label for="email">Email</label>
-                  <input type="email" id="email" name="email" required placeholder="you@domain.com" />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="you@domain.com"
+                  />
                 </div>
                 <div class="form-field full-width">
                   <label for="coop-type">Type of cooperation</label>
@@ -153,12 +186,24 @@
                 </div>
                 <div class="form-field full-width">
                   <label for="notes">Project details / Notes</label>
-                  <textarea id="notes" name="notes" rows="6" placeholder="Tell me more about the project, timeline, budget or anything else..."></textarea>
+                  <textarea
+                    id="notes"
+                    name="notes"
+                    rows="6"
+                    placeholder="Tell me more about the project, timeline, budget or anything else..."
+                  ></textarea>
                 </div>
               </div>
               <div class="form-actions">
-                <button type="submit" class="btn btn-primary">Send message</button>
-                <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
+                <button type="submit" class="btn btn-primary">
+                  Send message
+                </button>
+                <div
+                  id="form-message"
+                  class="form-message"
+                  role="status"
+                  aria-live="polite"
+                ></div>
               </div>
             </form>
             <div class="social-links" aria-hidden="false">
@@ -177,6 +222,6 @@
       </div>
     </footer>
     <script src="theme.js"></script>
-
+    <script src="main.js"></script>
   </body>
 </html>

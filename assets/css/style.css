@@ -42,7 +42,70 @@
    preferred = min + (max - min) × (current-vw - min-vw) / (max-vw - min-vw)
    But clamp() does this automatically! You just set the boundaries.
    -------------------------------------------------------------------------- */
+
+/* 🌙 DOMYŚLNIE CIEMNY TRYB */
 :root {
+  --color-bg: #0f0f0f;
+  --color-bg-alt: #1a1a1a;
+  --color-text: #f5f5f5;
+  --color-text-muted: #a0a0a0;
+  --color-accent: #6366f1;
+  --color-accent-hover: #818cf8;
+
+  /* TYPOGRAFIA */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  --text-4xl: clamp(2.5rem, 1.75rem + 3.75vw, 4rem);
+
+  /* ODSTĘPY */
+  --space-xs: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+  --space-sm: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+  --space-md: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+  --space-lg: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  --space-xl: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  --space-2xl: clamp(3rem, 2rem + 5vw, 6rem);
+
+  /* ANIMACJE */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-normal: 0.6s;
+}
+
+/* ☀️ JASNY TRYB */
+:root.light {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f5f5f5;
+  --color-text: #0f0f0f;
+  --color-text-muted: #555555;
+  --color-accent: #4f46e5;
+  --color-accent-hover: #6366f1;
+}
+.theme-toggle .sun,
+.theme-toggle .moon {
+  transition: opacity 0.25s ease;
+  position: absolute;
+}
+
+.theme-toggle .sun {
+  opacity: 0;
+}
+.theme-toggle .moon {
+  opacity: 1;
+}
+
+:root.light .theme-toggle .sun {
+  opacity: 1;
+}
+
+:root.light .theme-toggle .moon {
+  opacity: 0;
+}
+
+:root.light {
   /*
 	 * FLUID TYPOGRAPHY SCALE
 	 *
@@ -273,9 +336,11 @@ a {
   align-items: center;
   width: min(90%, 1200px);
   margin-inline: auto;
+  /* Positioning context for absolutely-positioned children */
+  position: relative;
+  /* Reserve space so the toggle doesn't overlap nav links on wide screens */
+  padding-right: 72px; /* 48px toggle + gap */
 }
-
-/* theme toggle styles removed */
 
 .nav-logo {
   font-size: var(--text-xl);
@@ -978,9 +1043,11 @@ a {
 
 /* 🔘 Przycisk przełącznika motywu */
 .theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
+  /* Position the toggle at the right edge of the centered nav container */
+  position: absolute;
+  top: 50%;
+  right: 16px; /* small gap from the container edge */
+  transform: translateY(-50%);
   background: var(--card);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
@@ -993,6 +1060,7 @@ a {
   justify-content: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: background 0.3s, transform 0.2s;
+  z-index: 200; /* sit above nav content */
 }
 
 .theme-toggle:hover {
@@ -1013,4 +1081,13 @@ a {
 /* 🌙 Księżyc w trybie ciemnym */
 :root.dark .theme-toggle .moon {
   opacity: 1;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(.dark) {
+    --color-bg: #ffffff;
+    --color-bg-alt: #f5f5f5;
+    --color-text: #0f0f0f;
+    --color-text-muted: #555555;
+  }
 }

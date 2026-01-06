@@ -546,41 +546,6 @@ a {
   background: var(--color-bg-alt);
 }
 
-.about-grid {
-  display: flex; /* tekst + zdjęcie obok siebie */
-  align-items: center; /* wyrównanie w pionie */
-  gap: var(--space-lg); /* odstęp między kolumnami */
-  flex-wrap: wrap; /* pozwala elementom zawijać się na małych ekranach */
-}
-
-.about-text {
-  flex: 1 1 300px; /* zajmuje dostępną przestrzeń, min. 300px */
-}
-
-.photo-placeholder {
-  flex: 0 0 40%; /* zajmuje 40% szerokości kontenera */
-  max-width: 500px; /* nie większa niż 500px */
-  aspect-ratio: 1 / 1; /* kwadrat */
-  background-color: var(--color-bg);
-  border: 2px dashed var(--color-accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Responsywność na mniejszych ekranach */
-@media (max-width: 768px) {
-  .about-grid {
-    flex-direction: column; /* tekst nad zdjęciem */
-    align-items: center; /* wycentrowanie */
-  }
-
-  .photo-placeholder {
-    width: 60%; /* większy na małych ekranach */
-    max-width: 300px; /* ograniczenie maksymalne */
-  }
-}
-
 .about-text p {
   margin-bottom: var(--space-md);
   color: var(--color-text-muted);

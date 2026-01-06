@@ -1,0 +1,65 @@
+/* Fluid typography helper - loaded after main stylesheet to override sizes
+   Defines a clamp()-based scale and maps semantic elements to the scale.
+*/
+:root {
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+  --text-4xl: clamp(2.5rem, 1.75rem + 3.75vw, 4rem);
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  /* Ensure body uses the fluid base size */
+  font-size: var(--text-base) !important;
+}
+
+/* Map headings to tokens */
+h1,
+.hero-title {
+  font-size: var(--text-4xl) !important;
+}
+h2,
+.section-title {
+  font-size: var(--text-3xl) !important;
+}
+h3 {
+  font-size: var(--text-2xl) !important;
+}
+h4 {
+  font-size: var(--text-xl) !important;
+}
+
+p,
+li,
+input,
+textarea,
+select {
+  font-size: var(--text-base) !important;
+}
+small,
+.muted {
+  font-size: var(--text-sm) !important;
+}
+
+/* Slightly larger logo/nav title */
+.nav-logo {
+  font-size: var(--text-xl) !important;
+}
+
+/* Improve line-height for headings */
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.15;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}

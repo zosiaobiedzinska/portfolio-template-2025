@@ -75,7 +75,8 @@
               style="
                 width: 500px;
                 height: 500px;
-                background-color: #ccc;
+                background-color: var(--color-bg);
+                border: 2px dashed var(--color-accent);
                 margin-top: 0;
                 margin-left: 20px;
                 float: right;
@@ -97,47 +98,40 @@
 
           <div class="projects-grid" data-reveal-stagger>
             <article class="project-card">
-              <div class="project-image">
-                <img
-                  src="https://picsum.photos/400/300?random=1"
-                  alt="Digital project"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-content">
-                <h3>Digital</h3>
-                <div class="project-tags"></div>
-              </div>
-            </article>
-
-            <article class="project-card">
-              <div class="project-image">
-                <img
-                  src="https://picsum.photos/400/300?random=2"
-                  alt="Manual project"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-content">
-                <h3>Manual</h3>
-                <div class="project-tags"></div>
-              </div>
-            </article>
-
-            <article class="project-card">
-              <div class="project-image">
-                <img
-                  src="https://picsum.photos/400/300?random=3"
-                  alt="Other project"
-                  loading="lazy"
-                />
-              </div>
-              <div class="project-content">
-                <h3>Other</h3>
-                <div class="project-tags"></div>
-              </div>
-            </article>
+          <div class="project-image">
+         <!-- Mniejszy kwadrat w środku -->
+           <div class="project-inner-placeholder"></div>
           </div>
+          <div class="project-content">
+            <h3>Digital</h3>
+            <div class="project-tags"></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image">
+            <!-- Mniejszy kwadrat w środku -->
+            <div class="project-inner-placeholder"></div>
+          </div>
+          <div class="project-content">
+            <h3>Manual</h3>
+            <div class="project-tags"></div>
+          </div>
+        </article>
+
+        <!-- Modal -->
+<div class="project-modal" id="project-modal">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
+    <h3 id="modal-title">Tytuł Projektu</h3>
+    <div class="modal-images">
+      <div class="modal-image-placeholder">Photo 1</div>
+      <div class="modal-image-placeholder">Photo 2</div>
+      <div class="modal-image-placeholder">Photo 3</div>
+    </div>
+  </div>
+</div>
+
         </div>
       </section>
 

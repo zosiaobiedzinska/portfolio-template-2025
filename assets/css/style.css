@@ -611,6 +611,14 @@ a {
    8. Projects Section
    -------------------------------------------------------------------------- */
 .projects-grid {
+  display: flex;
+  justify-content: center; /* wyśrodkowanie kart */
+  gap: var(--space-lg); /* odstęp między kartami */
+  flex-wrap: wrap; /* zawijanie na mniejszych ekranach */
+  margin-top: var(--space-md);
+}
+
+.projects-grid {
   display: grid;
   gap: var(--space-lg);
 }
@@ -618,12 +626,6 @@ a {
 @media (min-width: 640px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -637,6 +639,40 @@ a {
 .project-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.project-inner-placeholder {
+  width: 60%; /* szerokość w procentach, responsywna */
+  max-width: 400px; /* maksymalna szerokość */
+  aspect-ratio: 1 / 1; /* zawsze kwadrat */
+  background: var(--color-bg);
+  border: 2px dashed var(--color-accent);
+  border-radius: 8px;
+
+  position: absolute; /* absolutnie w środku .project-image */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  text-align: center;
+  pointer-events: none; /* placeholder nie blokuje kliknięć */
+}
+
+/* Responsywność - mniejsze ekrany */
+@media (max-width: 640px) {
+  .project-inner-placeholder {
+    width: 60%; /* większy na małych ekranach, łatwiej zobaczyć */
+  }
+}
+
+/* Upewniamy się, że .project-image ma pozycjonowanie względne */
+.project-image {
+  position: relative;
 }
 
 .project-image {
@@ -682,6 +718,78 @@ a {
   background: var(--color-bg);
   border-radius: 4px;
   color: var(--color-accent);
+}
+
+/* Modal overlay */
+.project-modal {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.7);
+  display: none; /* domyślnie ukryty */
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: var(--space-lg);
+}
+
+/* Modal content */
+.modal-content {
+  background: var(--color-bg-alt);
+  border-radius: 16px;
+  padding: var(--space-xl);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  font-size: var(--text-2xl);
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+/* Modal images */
+.modal-images {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.modal-image-placeholder {
+  width: 150px;
+  aspect-ratio: 1/1;
+  background: var(--color-bg);
+  border: 2px dashed var(--color-accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+}
+
+/* Responsywność */
+@media (max-width: 640px) {
+  .modal-images {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .modal-image-placeholder {
+    width: 100%;
+    max-width: 200px;
+  }
 }
 
 /* --------------------------------------------------------------------------

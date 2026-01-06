@@ -423,3 +423,30 @@ function initContactForm() {
 
 // Init contact form after DOM ready
 document.addEventListener("DOMContentLoaded", initContactForm);
+
+// Pobieramy elementy
+const modal = document.getElementById("project-modal");
+const modalTitle = document.getElementById("modal-title");
+const modalClose = modal.querySelector(".modal-close");
+const projectCards = document.querySelectorAll(".project-card");
+
+// Funkcja otwierania modalu
+projectCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const title = card.querySelector("h3").textContent;
+    modalTitle.textContent = title;
+    modal.style.display = "flex"; // pokazujemy modal
+  });
+});
+
+// Funkcja zamykania modalu
+modalClose.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// Zamknięcie po kliknięciu poza modal content
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});

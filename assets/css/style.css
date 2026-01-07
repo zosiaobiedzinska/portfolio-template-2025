@@ -565,6 +565,22 @@ a {
 }
 
 .skill-icon {
+  .about-grid .project-image {
+    position: relative; /* contain absolute inner placeholder */
+    flex: 0 0 40%;
+    max-width: 500px;
+    aspect-ratio: 4/3; /* keep project-image default aspect ratio */
+    margin-left: 12px; /* slightly closer to the paragraph */
+    align-self: flex-start; /* align toward the top so we can nudge it down */
+    margin-top: var(--space-md); /* nudge toward the second paragraph */
+  }
+
+  .about-grid .project-image .project-inner-placeholder {
+    position: absolute; /* keep existing centered placeholder behaviour */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   font-size: var(--text-2xl);
   display: block;
   margin-bottom: var(--space-sm);

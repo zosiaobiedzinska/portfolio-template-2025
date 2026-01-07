@@ -350,6 +350,49 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("🚀 Grade 1 Demo: Vanilla scroll animations initialized");
 });
 
+// ======================================================================
+// 7. MOBILE NAV (HAMBURGER) — simple accessible toggle
+// ======================================================================
+function initMobileNav() {
+  const navToggle = document.getElementById("nav-toggle");
+  const navContainer = document.querySelector(".nav-container");
+  const navList = document.getElementById("nav-links");
+
+  if (!navToggle || !navContainer || !navList) return;
+
+  const setOpen = (open) => {
+    navContainer.classList.toggle("nav-open", open);
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    // change visual affordance (simple)
+    navToggle.textContent = open ? "✕" : "☰";
+  };
+
+  navToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = navContainer.classList.contains("nav-open");
+    setOpen(!isOpen);
+  });
+
+  // Close when a link is clicked (mobile behavior)
+  navList.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => setOpen(false));
+  });
+
+  // Close on Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+
+  // Close when clicking outside the open menu
+  document.addEventListener("click", (e) => {
+    if (!navContainer.contains(e.target)) setOpen(false);
+  });
+}
+
+// Init mobile nav after DOM ready
+document.addEventListener("DOMContentLoaded", initMobileNav);
+
 // ==========================================================================
 // 6. CLEANUP (FOR SPA ENVIRONMENTS)
 // ==========================================================================

@@ -540,6 +540,58 @@ a {
   margin-bottom: var(--space-lg);
 }
 
+/* Hero-specific entrance: slightly faster, staggered reveal for title + subtitle */
+.hero .hero-title.animate-on-scroll {
+  /* override global translateY to a smaller, snappier motion */
+  transform: translateY(12px) scale(0.995);
+  transition-delay: 0.06s; /* title appears first */
+  transition-duration: calc(var(--duration-normal) * 0.9);
+}
+
+.hero .hero-subtitle.animate-on-scroll {
+  transform: translateY(16px);
+  transition-delay: 0.22s; /* subtitle slightly after title */
+  transition-duration: calc(var(--duration-normal) * 0.95);
+}
+
+/* When the JS adds .visible the global rules handle opacity/transform → this
+   keeps hero animation consistent with the rest of the site but with its
+   own timing/delay for a pleasant entrance. */
+
+/* Keyframe-driven entrance that runs on page load when .hero-animate is set.
+   This guarantees a visible hero entrance even if IntersectionObserver
+   already marked elements visible in the DOM. */
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(36px) scale(0.985);
+    filter: blur(4px);
+    letter-spacing: -0.02em;
+  }
+  60% {
+    /* overshoot for a lively 'pop' */
+    transform: translateY(-4px) scale(1.02);
+    filter: blur(0);
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    letter-spacing: -0.02em;
+  }
+}
+
+.hero.hero-animate .hero-title {
+  animation: hero-in 0.92s cubic-bezier(0.2, 0.9, 0.2, 1) both 0.04s;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.hero.hero-animate .hero-subtitle {
+  animation: hero-in 0.82s cubic-bezier(0.2, 0.9, 0.2, 1) both 0.26s;
+  color: var(--color-text-muted);
+}
+
 /* Scroll Indicator */
 .scroll-indicator {
   position: absolute;

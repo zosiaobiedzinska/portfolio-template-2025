@@ -350,6 +350,20 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("🚀 Grade 1 Demo: Vanilla scroll animations initialized");
 });
 
+// Add hero-animate class after DOM ready to trigger keyframe entrance
+// Respect prefers-reduced-motion for accessibility.
+document.addEventListener("DOMContentLoaded", () => {
+  try {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const hero = document.querySelector(".hero");
+    if (!hero) return;
+    // Delay slightly to ensure the browser has painted initial state
+    setTimeout(() => hero.classList.add("hero-animate"), 60);
+  } catch (e) {
+    // silent fail — non-critical
+  }
+});
+
 // ======================================================================
 // 7. MOBILE NAV (HAMBURGER) — simple accessible toggle
 // ======================================================================
